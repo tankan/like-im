@@ -1,0 +1,120 @@
+{
+  // 使用该设置告诉 VS Code 始终在 Tailwind CSS 模式下打开文件：files.associations.css
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  // 编辑 "字符串" 内容时不会出发提示
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  // 默认配置
+  "todo-tree.highlights.defaultHighlight": {
+    "icon": "alert",
+    "type": "text",
+    "foreground": "#ff0000",
+    "background": "#ffffff",
+    "opacity": 50,
+    "iconColour": "#0000ff"
+  },
+  // 自定义配置
+  "todo-tree.highlights.customHighlight": {
+    // 标记代码检查、待开发
+    "TODO": {
+      "type": "line",
+      "foreground": "#ffffff",
+      "background": "#0000ff",
+      "iconColour": "#0000ff",
+      "gutterIcon": true
+    },
+    // 标记代码修正、修复
+    "FIXME": {
+      "type": "line",
+      "foreground": "#ffffff",
+      "background": "#ffff00",
+      "iconColour": "#ffff00",
+      "gutterIcon": true
+    },
+    // 标记代码漏洞、错误
+    "BUG": {
+      "type": "line",
+      "foreground": "#ffffff",
+      "background": "#ff000080",
+      "iconColour": "#ff000080",
+      "gutterIcon": true
+    },
+    // 标记代码补丁、异化
+    "HACK": {
+      "type": "line",
+      "foreground": "#ffffff",
+      "background": "#00ff0080",
+      "iconColour": "#00ff0080",
+      "gutterIcon": true
+    }
+  },
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "todo-tree.general.tags": ["BUG", "HACK", "FIXME", "TODO"],
+  // 排除列表
+  "todo-tree.filtering.excludeGlobs": [
+    "**/vendor/**",
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/bower_components/**",
+    "**/build/**",
+    "**/.vscode/**",
+    "**/.nuxt/**",
+    "**/.github/**",
+    "**/.output/**",
+    "**/*.min.*",
+    "**/*.map"
+  ],
+  "editor.guides.bracketPairs": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.formatOnSave": false,
+  "javascript.format.enable": true,
+  "eslint.enable": true,
+  "json.format.enable": true,
+  "tslint.enable": false,
+  "eslint.format.enable": true,
+	"editor.fontSize": 16,
+	"editor.tabSize": 2,
+  "eslint.workingDirectories": [],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": false,
+    "source.fixAll.eslint": true
+  },
+  "eslint.codeActionsOnSave.rules": ["*"],
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "[javascript]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+  "[typescript]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+  "[vue]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+	"[json]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+  "[html]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+  "json.trace.server": "off",
+  "stylelint.validate": ["css", "scss", "postcss", "vue"],
+  "cSpell.words": [],
+	"tabnine.experimentalAutoImports": true,
+	"workbench.iconTheme": "vscode-icons",
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"javascript.updateImportsOnFileMove.enabled": "always",
+  "fileheader.customMade": {
+    "Author": "git config user.name && git config user.email",
+    "Date": "Do not edit",
+    "LastEditors": "git config user.name && git config user.email",
+    "LastEditTime": "Do not edit",
+    "FilePath": "Do not edit",
+    "Description": "",
+  },
+  "fileheader.cursorMode": {
+    "description": "",
+    "param": "",
+    "return": "",
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

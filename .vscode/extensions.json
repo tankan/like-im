@@ -1,0 +1,29 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "webhint.vscode-webhint",
+    "Gruntfuggly.todo-tree",
+    "TabNine.tabnine-vscode",
+    "vscode-icons-team.vscode-icons",
+    "MS-CEINTL.vscode-language-pack-zh-hans",
+    "shardulm94.trailing-spaces",
+    "stylelint.vscode-stylelint",
+    "formulahendry.code-runner",
+    "eamodio.gitlens",
+    "pranaygp.vscode-css-peek",
+    "christian-kohler.path-intellisense",
+    "formulahendry.auto-close-tag",
+    "streetsidesoftware.code-spell-checker",
+    "sburg.vscode-javascript-booster",
+    "christian-kohler.npm-intellisense",
+    "ritwickdey.LiveServer",
+    "antfu.unocss",
+    "formulahendry.auto-rename-tag",
+    "oderwat.indent-rainbow",
+    "IgorSbitnev.error-gutters",
+    "naumovs.color-highlight",
+    "OBKoro1.korofileheader",
+    "kisstkondoros.vscode-codemetrics"
+  ]
+}

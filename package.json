@@ -1,0 +1,22 @@
+{
+  "name": "like-im",
+  "version": "1.0.0",
+  "description": "like im 聊天室",
+  "main": "client/index.js",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm"
+  },
+  "engines": {
+    "node": "16.17.0"
+  },
+  "keywords": [
+    "likeim",
+    "socket.io"
+  ],
+  "author": "me@zengxingqi.com",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^4.5.3",
+    "socket.io-client": "^4.5.3"
+  }
+}
