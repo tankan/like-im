@@ -17,16 +17,16 @@ const redisClient = createClient({ url: "redis://default:redispw@localhost:55000
 const pubClient = createClient({ url: "redis://default:redispw@localhost:55000" });
 const subClient = pubClient.duplicate();
 function adapterError() {
-  console.log("adapter 错误回调");
+  console.error("adapter 错误回调");
 }
 function ioConnection(client) {
   console.log(client);
 }
 Promise.all([pubClient.connect(), subClient.connect()]).then(() => {
   io.adapter(createAdapter(pubClient, subClient));
-  // const nameSpaced = io.of("like");
-  // nameSpaced.on("connection", ioConnection);
-  // io.of("/").adapter.on("error", adapterError);
+  const nameSpaced = io.of("like");
+  nameSpaced.on("connection", ioConnection);
+  io.of("/").adapter.on("error", adapterError);
   instrument(io, {
     mode: process.env.NODE_ENV,
     nameSpaced: "/admin",
