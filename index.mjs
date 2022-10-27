@@ -2,7 +2,7 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import { createAdapter } from "@socket.io/redis-adapter";
 import { createClient } from "redis";
-import { instrument, RedisStore } from "@socket.io/admin-ui";
+import { instrument } from "@socket.io/admin-ui"; // , RedisStore
 import { url, username, password } from "./auth.mjs";
 const HTTPServer = createServer();
 const io = new Server(HTTPServer, {
@@ -13,14 +13,14 @@ const io = new Server(HTTPServer, {
     credentials: true
   }
 });
-const redisClient = createClient({ url });
+// const redisClient = createClient({ url });
 const pubClient = createClient({ url });
 const subClient = pubClient.duplicate();
 const nameSpaced = io.of("like");
 instrument(io, {
   mode: process.env.NODE_ENV,
   nameSpaced: "/admin",
-  store: new RedisStore(redisClient),
+  // store: new RedisStore(redisClient),
   auth: {
     type: "basic",
     username,
