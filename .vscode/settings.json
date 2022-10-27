@@ -1,8 +1,4 @@
 {
-  // 使用该设置告诉 VS Code 始终在 Tailwind CSS 模式下打开文件：files.associations.css
-  "files.associations": {
-    "*.css": "tailwindcss"
-  },
   // 编辑 "字符串" 内容时不会出发提示
   "editor.quickSuggestions": {
     "strings": true
