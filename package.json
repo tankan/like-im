@@ -1,7 +1,7 @@
 {
   "name": "like-im",
   "version": "1.0.0",
-  "description": "like im 聊天室",
+  "description": "socket 信令服务",
   "main": "index.mjs",
   "scripts": {
     "dev": "NODE_ENV=development node index.mjs",
@@ -12,7 +12,9 @@
     "node": "16.17.0"
   },
   "keywords": [
-    "likeim",
+    "like",
+    "im",
+    "socket",
     "socket.io"
   ],
   "author": "me@zengxingqi.com",

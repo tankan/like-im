@@ -1,2 +1,2 @@
 # like-im
-IM 聊天室
+socket 信令服务
