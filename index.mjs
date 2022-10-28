@@ -9,7 +9,7 @@ const io = new Server(HTTPServer, {
   path: "/like",
   serveClient: false,
   cors: {
-    origin: ["https://imadmin.canicode.cn"],
+    origin: ["https://imadmin.canicode.cn", "https://rtc.canicode.cn", "https://tv.canicode.cn"],
     credentials: true
   }
 });
