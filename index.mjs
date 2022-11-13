@@ -43,7 +43,7 @@ function ioConnection(client) {
     // console.log("用户 %O 离开房间： %O", client.id, room);
     client.to(room).emit("leaved", room, client.id);
   }
-  async function disconnect(reason) {
+  async function disconnect() { // reason
     const room = await pubClient.get(client.id);
     // console.log("用户 %O 断开连接: %o, 房间： %O", client.id, reason, room);
     room && logout(room);
