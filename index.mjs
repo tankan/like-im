@@ -9,14 +9,14 @@ const io = new Server(HTTPServer, {
   path: "/like",
   serveClient: false,
   cors: {
-    origin: ["https://imadmin.canicode.cn", "https://rtc.canicode.cn", "https://tv.canicode.cn"],
+    origin: ["https://js.icu", "https://imadmin.canicode.cn", "https://rtc.canicode.cn", "https://tv.canicode.cn"],
     credentials: true
   }
 });
 // const redisClient = createClient({ url });
 const pubClient = createClient({ url });
 const subClient = pubClient.duplicate();
-const nameSpaced = io.of("like");
+const nameSpaced = io.of("/");
 instrument(io, {
   mode: process.env.NODE_ENV,
   nameSpaced: "/admin",
@@ -31,30 +31,34 @@ function adapterError() {
   console.error("adapter 错误回调");
 }
 function ioConnection(client) {
+  // console.log("用户 %O 连接房间", client.id);
   function join(room) {
+    // console.log("用户 %O 加入房间：%O", client.id, room);
     // 除自己以外
     client.to(room).emit("joined", room, client.id);
   }
   function leave(room) {
+    // console.log("用户 %O 离开房间： %O", client.id, room);
     client.to(room).emit("leaved", room, client.id);
   }
-  function getClientRoom(err, room) {
-    if (err) return;
-    logout(room);
+  async function disconnect(reason) {
+    const room = await pubClient.get(client.id);
+    // console.log("用户 %O 断开连接: %o, 房间： %O", client.id, reason, room);
+    room && logout(room);
   }
-  function disconnect() {
-    pubClient.get(client.id, getClientRoom);
-  }
-  function login(room) {
+  async function login(room) {
+    // console.log("用户 %O 登陆房间： %O", client.id, room);
     client.join(room);
-    pubClient.set(client.id, room);
+    await pubClient.set(client.id, room);
     // 给自己发
     const myRoom = nameSpaced.adapter.rooms.get(room);
     if (myRoom) {
       client.emit("online", room, [...myRoom.keys()]);
+      client.to(room).emit("logged", room, client.id);
     }
   }
   function logout(room) {
+    // console.log("用户 %O 退出房间： %O", client.id, room);
     client.leave(room);
     client.to(room).emit("logout", room, client.id);
     pubClient.del(client.id);
