@@ -9,7 +9,7 @@ const io = new Server(HTTPServer, {
   path: "/like",
   serveClient: false,
   cors: {
-    origin: ["https://js.icu", "https://imadmin.canicode.cn", "https://rtc.canicode.cn", "https://tv.canicode.cn"],
+    origin: ["http://localhost:5173", "https://js.icu", "https://imadmin.canicode.cn", "https://tv.canicode.cn"],
     credentials: true
   }
 });
@@ -32,8 +32,10 @@ function adapterError() {
 }
 function ioConnection(client) {
   // console.log("用户 %O 连接房间", client.id);
-  function join(room) {
+  async function join(room) {
     // console.log("用户 %O 加入房间：%O", client.id, room);
+    client.join(room);
+    await pubClient.set(client.id, room);
     // 除自己以外
     client.to(room).emit("joined", room, client.id);
   }
@@ -41,15 +43,13 @@ function ioConnection(client) {
     // console.log("用户 %O 离开房间： %O", client.id, room);
     client.to(room).emit("leaved", room, client.id);
   }
-  async function disconnect(reason) {
+  async function disconnect() { // reason
     const room = await pubClient.get(client.id);
     // console.log("用户 %O 断开连接: %o, 房间： %O", client.id, reason, room);
     room && logout(room);
   }
-  async function login(room) {
+  function login(room) {
     // console.log("用户 %O 登陆房间： %O", client.id, room);
-    client.join(room);
-    await pubClient.set(client.id, room);
     // 给自己发
     const myRoom = nameSpaced.adapter.rooms.get(room);
     if (myRoom) {
