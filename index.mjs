@@ -63,9 +63,13 @@ function ioConnection(client) {
     client.to(room).emit("logout", room, client.id);
     pubClient.del(client.id);
   }
+  function msg(room, message) {
+    client.to(room).emit("msg", room, message);
+  }
   client.on("logout", logout);
   client.on("login", login);
   client.on("join", join);
+  client.on("msg", msg);
   client.on("leave", leave);
   client.on("disconnect", disconnect);
   client.on("error", client.disconnect);
