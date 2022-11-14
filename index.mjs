@@ -64,7 +64,7 @@ function ioConnection(client) {
     pubClient.del(client.id);
   }
   function msg(room, message) {
-    client.to(room).emit("msg", client.id, message);
+    nameSpaced.to(room).emit("msg", client.id, message);
   }
   client.on("logout", logout);
   client.on("login", login);
