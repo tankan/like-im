@@ -35,9 +35,9 @@ function ioConnection(client) {
   async function join(room) {
     // console.log("用户 %O 加入房间：%O", client.id, room);
     client.join(room);
-    await pubClient.set(client.id, room);
     // 除自己以外
     client.to(room).emit("joined", room, client.id);
+    await pubClient.set(client.id, room);
   }
   function leave(room) {
     // console.log("用户 %O 离开房间： %O", client.id, room);
